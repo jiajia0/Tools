@@ -227,6 +227,25 @@ def insert_pdf(pdf1, pdf2, insert_num, merged_name, password1=None, password2=No
     m_pdf.write(open(merged_name, 'wb'))
 
 
+def split_pdf_by_pages(filename,beginnum, endnum,output_filename):
+    """
+    从filename文件中抽取出beginnum和endnum中的页数
+    :param filename:
+    :param beginnum_endnum:
+    :return:
+    """
+    pdf_reader = get_reader(filename, '')
+    if not pdf_reader:
+        return
+
+    # 得到pdf的总页数
+    pages = pdf_reader.numPages
+    pdf_writer = PdfFileWriter()
+    for num in range(beginnum, endnum):
+        pdf_writer.addPage(pdf_reader.getPage(num))
+    pdf_writer.write(open(output_filename, 'wb'))
+
+
 if __name__ == '__main__':
     # encrypt_pdf('ex1.pdf', 'leafage')
     # decrypt_pdf('ex1123_encrypted.pdf', 'leafage')
