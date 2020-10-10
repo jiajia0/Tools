@@ -25,4 +25,4 @@ def remove_file_in_dir(root_dir, delete_type):
 
 
 if __name__ == '__main__':
-    remove_file_in_dir(r"H:\视频\计算机\62-玩转Git三剑客", ['.downloading', '.cfg'])
+    remove_file_in_dir(r"H:\视频", ['.downloading', '.cfg'])
